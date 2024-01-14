@@ -1,12 +1,9 @@
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-WORKDIR /app
-COPY . .
-dotnet restore --no-cache
-RUN dotnet publish -c Release -o out
-
-# Run
-FROM mcr.microsoft.com/dotnet/aspnet:7.0
-WORKDIR /app
-COPY --from=build /app/out .
-ENV ASPNETCORE_URLS=http://*:80
-CMD dotnet App.dll
+FROM ubuntu
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update
+RUN apt-get install apache2 -y
+RUN apt-get install apache2-utils -y
+RUN apt-get clean
+EXPOSE 80
+RUN echo "Hello From Server" > /var/www/html/index.html
+CMD ["apache2ctl","-D","FOREGROUND"]
