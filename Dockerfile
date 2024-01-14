@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /app
 COPY . .
-RUN dotnet restore
+dotnet restore --no-cache
 RUN dotnet publish -c Release -o out
 
 # Run
