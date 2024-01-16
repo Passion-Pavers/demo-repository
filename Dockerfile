@@ -1,9 +1,7 @@
-FROM ubuntu
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update
-RUN apt-get install apache2 -y
-RUN apt-get install apache2-utils -y
-RUN apt-get clean
-EXPOSE 80
-RUN echo "Hello From Server" > /var/www/html/index.html
-CMD ["apache2ctl","-D","FOREGROUND"]
+FROM python:3.9-alpine
+WORKDIR /<github-repo>
+ENV  MSG="Hello World!"
+COPY . .
+RUN pip3 install -r requirement.txt
+EXPOSE 5000
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
