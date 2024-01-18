@@ -1,15 +1,15 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:570338923786:task-definition/demo-repo:4",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:570338923786:task-definition/sample-app:1",
     "containerDefinitions": [
         {
-            "name": "demo-repo",
-            "image": "570338923786.dkr.ecr.us-east-1.amazonaws.com/demo-repo",
+            "name": "nginx",
+            "image": "nginx:latest",
             "cpu": 0,
             "portMappings": [
                 {
-                    "name": "demo-repo-5000-tcp",
-                    "containerPort": 5000,
-                    "hostPort": 5000,
+                    "name": "nginx-80-tcp",
+                    "containerPort": 80,
+                    "hostPort": 80,
                     "protocol": "tcp",
                     "appProtocol": "http"
                 }
@@ -22,22 +22,16 @@
             "ulimits": []
         }
     ],
-    "family": "demo-repo",
+    "family": "sample-app",
     "taskRoleArn": "arn:aws:iam::570338923786:role/ecs-task-role",
     "executionRoleArn": "arn:aws:iam::570338923786:role/ecs-task-role",
     "networkMode": "awsvpc",
-    "revision": 4,
+    "revision": 1,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
         {
-            "name": "com.amazonaws.ecs.capability.ecr-auth"
-        },
-        {
             "name": "com.amazonaws.ecs.capability.task-iam-role"
-        },
-        {
-            "name": "ecs.capability.execution-role-ecr-pull"
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
@@ -60,7 +54,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-01-16T14:38:42.946Z",
+    "registeredAt": "2024-01-18T10:04:38.889Z",
     "registeredBy": "arn:aws:iam::570338923786:user/iamadmin",
     "tags": []
 }
