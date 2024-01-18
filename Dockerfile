@@ -1,6 +1,6 @@
 FROM python:3.9-alpine
 WORKDIR /<github-repo>
-ENV  MSG="Hello World!"
+ENV  MSG="Hello World second!"
 COPY . .
 RUN pip3 install -r requirements.txt
 EXPOSE 5000
